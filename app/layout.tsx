@@ -7,7 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: {
+        //default title on the root page
         default: siteConfig.name,
+
+        //title on other pages, example "My organization | Achiveo"
         template: `%s | ${siteConfig.name}`,
     },
     description: siteConfig.description,

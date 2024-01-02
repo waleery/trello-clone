@@ -36,7 +36,7 @@ const MarketingPage = () => {
                 </div>
             </div>
             <div className={cn("text-sm md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center mx-auto", textFont.className)}>
-                Foster teamwork, organize projects effortlessly, and unlock new
+                Foster teamwork, manage projects, and unlock new
                 productivity levels - your perfect companion for achieving goals
                 is Achievo.
             </div>

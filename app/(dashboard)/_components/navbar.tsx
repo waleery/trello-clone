@@ -14,11 +14,16 @@ const Navbar = () => {
                 </div>
                 <Button
                     size="sm"
+                    variant="primary"
                     className="rounded-sm hidden md:block h-auto py-1.5 px-2"
                 >
                     Create
                 </Button>
-                <Button size="sm" className="rounded-sm block md:hidden">
+                <Button
+                    size="sm"
+                    variant="primary"
+                    className="rounded-sm block md:hidden"
+                >
                     <Plus className="h-4 w-4" />
                 </Button>
             </div>
@@ -38,13 +43,17 @@ const Navbar = () => {
                         },
                     }}
                 />
-                <UserButton afterSignOutUrl="/"
-                appearance={{elements:{
-                    avatarBox:{
-                        height:30,
-                        width:30
-                    }
-                }}}/>
+                <UserButton
+                    afterSignOutUrl="/"
+                    appearance={{
+                        elements: {
+                            avatarBox: {
+                                height: 30,
+                                width: 30,
+                            },
+                        },
+                    }}
+                />
             </div>
         </nav>
     );

@@ -8,6 +8,7 @@ import { Plus } from "lucide-react";
 import Link from "next/link";
 import { useLocalStorage } from "usehooks-ts";
 import {NavItem, Organization} from "./nav-item";
+import { useMemo } from "react";
 
 interface SidebarProps {
     storageKey?: string;
@@ -30,15 +31,15 @@ const Sidebar = ({ storageKey = "achiveo-sidebar-project" } : SidebarProps) => {
         });
 
     // { "123": true, "456": false, "789": true} => ["123", "789"]
-    const defaultAccordionValue: string[] = Object.keys(expanded).reduce(
-        (acc: string[], key: string) => {
+    const defaultAccordionValue = useMemo(() => {
+        return Object.keys(expanded).reduce((acc: string[], key: string) => {
+            console.log("funkcja")
             if (expanded[key]) {
                 acc.push(key);
             }
             return acc;
-        },
-        []
-    );
+        }, []);
+    }, [expanded]);
 
     const onExpand = (id: string) => {
         setExpanded((current) => ({

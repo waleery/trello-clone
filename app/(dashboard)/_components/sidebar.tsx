@@ -63,7 +63,16 @@ const Sidebar = ({ storageKey = "achiveo-sidebar-project" } : SidebarProps) => {
     ) {
         return (
             <>
-                <Skeleton />
+                <div className="flex items-center justify-between m-1 mb-3">
+                    <Skeleton className="ml-3 h-9 w-[30%]" />
+                    <Skeleton className="h-9 w-9" />
+                </div>
+                <div className="space-y-3 ">
+                    <NavItem.Skeleton />
+                    <NavItem.Skeleton />
+                    <NavItem.Skeleton />
+                    <NavItem.Skeleton />
+                </div>
             </>
         );
     }

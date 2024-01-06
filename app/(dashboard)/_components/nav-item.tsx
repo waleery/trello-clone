@@ -10,6 +10,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export type Organization = {
     id: string;
@@ -31,7 +32,6 @@ export const NavItem = ({
     organization,
     onExpand,
 }: NavItemProps) => {
-
     const router = useRouter();
     const pathname = usePathname();
 
@@ -99,10 +99,20 @@ export const NavItem = ({
                         )}
                         variant="ghost"
                     >
-                        {route.icon}{route.label}
+                        {route.icon}
+                        {route.label}
                     </Button>
                 ))}
             </AccordionContent>
         </AccordionItem>
+    );
+};
+
+NavItem.Skeleton = function SkeletonNavItem() {
+    return (
+        <div className="flex items-center  justify-between gap-x-2 mx-1 ">
+            <Skeleton className="w-28 h- " />
+            <Skeleton className="w-5 h-5 mr-1" />
+        </div>
     );
 };

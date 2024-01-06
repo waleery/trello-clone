@@ -15,6 +15,9 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ storageKey = "achiveo-sidebar-project" } : SidebarProps) => {
+    
+    //this state is only used to set default accordion value, and to change accordion item color/background-color
+    //shadcn is responsible for showing/hiding accordion content
     const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
         storageKey,
         {}

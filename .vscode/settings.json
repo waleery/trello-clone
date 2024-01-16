@@ -3,6 +3,7 @@
         "organization",
         "prisma",
         "zod",
-        "serverActions"
+        "serverActions",
+        "components"
     ]
 }

@@ -4,6 +4,7 @@
         "prisma",
         "zod",
         "serverActions",
-        "components"
+        "components",
+        "hooks"
     ]
 }

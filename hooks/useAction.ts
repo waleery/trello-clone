@@ -21,13 +21,12 @@ export const useAction = <TInput, TOutput>( action: Action<TInput, TOutput>, opt
         try {
             const result = await action(input);
 
+            setFieldErrors(result.fieldErrors);
+
             if(!result){
                 return
             }
-
-            if(result.fieldErrors){
-                setFieldErrors(result.fieldErrors);
-            }
+            
             if(result.error){
                 setError(result.error);
                 options.onError?.(result.error);

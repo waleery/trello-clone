@@ -9,20 +9,43 @@ import { createSafeAction } from "@/lib/createSafeAction";
 import { CreateBoard } from "./schema";
 
 const handler = async (data: InputType): Promise<OutputType> => {
-    const { userId } = auth();
+    const { userId, orgId } = auth();
 
-    if (!userId) {
+    if (!userId || !orgId) {
         return {
             error: "Unauthorized",
         };
     }
 
-    const { title } = data;
+    const { title, image } = data;
+
+    const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] =
+        image.split("|");
+
+    if (
+        !imageId ||
+        !imageThumbUrl ||
+        !imageFullUrl ||
+        !imageLinkHTML ||
+        !imageUserName
+    ) {
+        return {
+            error: "Missing image fields. Failed to create board",
+        };
+    }
 
     let board;
     try {
         board = await db.board.create({
-            data: { title },
+            data: {
+                title,
+                orgId,
+                imageId,
+                imageThumbUrl,
+                imageFullUrl,
+                imageLinkHTML,
+                imageUserName,
+            },
         });
     } catch (error) {
         return {
@@ -33,7 +56,7 @@ const handler = async (data: InputType): Promise<OutputType> => {
     //future path
     revalidatePath(`/boards/${board.id}`);
     return { data: board };
-
+    
 };
 
-export const createBoard = createSafeAction(CreateBoard, handler)
+export const createBoard = createSafeAction(CreateBoard, handler);

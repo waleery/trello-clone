@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
+import { Loader2 } from "lucide-react";
+import { useFormStatus } from "react-dom";
+import { useEffect, useState } from "react";
+
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useFormStatus } from "react-dom";
-
+import { defaultImages } from "@/constants/images";
 interface FormPickerProps {
     id: string;
     errors?: Record<string, string[] | undefined>;
@@ -37,7 +38,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
                 }
             } catch (error) {
                 console.log(error);
-                setImages([]);
+                setImages(defaultImages);
             } finally {
                 setIsLoading(false);
             }

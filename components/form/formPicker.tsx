@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { defaultImages } from "@/constants/images";
+import Link from "next/link";
 interface FormPickerProps {
     id: string;
     errors?: Record<string, string[] | undefined>;
@@ -64,17 +65,19 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
                         )}
                         key={image.id}
                         onClick={() => {
-                            if(pending) return
+                            if (pending) return;
                             setSelectedImageId(image.id);
                         }}
                     >
-                        <Image 
-                        src={image.urls.thumb}
+                        <Image
+                            src={image.urls.thumb}
                             fill
                             alt="Unsplash image"
                             className="object--cover rounded-sm"
-                        
                         />
+                        <Link href={image.links.html} target="_blank" className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[8px] truncate text-white hover:underline pt-[2px] pl-[2px] pb-[1px] bg-black/50">
+                            {image.user.name}
+                        </Link>
                     </div>
                 ))}
             </div>

@@ -5,6 +5,7 @@
         "zod",
         "serverActions",
         "components",
-        "hooks"
+        "hooks",
+        "board"
     ]
 }

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 
 export type Organization = {
     id: string;
@@ -34,6 +35,8 @@ export const NavItem = ({
 }: NavItemProps) => {
     const router = useRouter();
     const pathname = usePathname();
+    const { organization: activeOrganization } = useOrganization();
+    const { setActive } = useOrganizationList();
 
     const routes = [
         {
@@ -58,7 +61,12 @@ export const NavItem = ({
         },
     ];
 
-    const redirectTo = (href: string) => {
+    const redirectTo = async (href: string) => {
+        if (activeOrganization?.id !== organization.id && setActive) {
+            await setActive({
+                organization: organization.id as string,
+            });
+        }
         router.push(href);
     };
 

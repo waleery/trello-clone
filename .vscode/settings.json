@@ -6,6 +6,7 @@
         "serverActions",
         "components",
         "hooks",
-        "board"
+        "board",
+        "lists"
     ]
 }

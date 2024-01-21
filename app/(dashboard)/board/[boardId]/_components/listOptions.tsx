@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteList } from "@/actions/delete-list";
 import { FormSubmit } from "@/components/form/formSubmit";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,8 +10,12 @@ import {
     PopoverClose,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
+import { useAction } from "@/hooks/useAction";
 import { List } from "@prisma/client";
+import { exec } from "child_process";
 import { MoreHorizontal, X } from "lucide-react";
+import { ElementRef, useRef } from "react";
+import { toast } from "sonner";
 
 interface ListOptionsProps {
     data: List;
@@ -18,6 +23,25 @@ interface ListOptionsProps {
 }
 
 const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+    const closeRef = useRef<ElementRef<'button'>>(null);
+
+    const { execute: executeDelete } = useAction(deleteList, {
+        onSuccess: (data) => {
+            toast.success(`List ${data.title} deleted`);
+            closeRef.current?.click();
+        },
+        onError: (error) => {
+            toast.error(error);
+        },
+    });
+
+    const onDelete= (formData: FormData) => {
+        const id = formData.get("id") as string;
+        const boardId = formData.get("boardId") as string;
+
+        executeDelete({ id, boardId });
+    }
+
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -38,6 +62,7 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                         className="h-auto w-auto p-1 absolute top-2 right-2 text-neutral-600"
                         size="sm"
                         variant="ghost"
+                        ref={closeRef}
                     >
                         <X className="h-4 w-4" />
                     </Button>
@@ -68,7 +93,7 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                 </form>
                 <Separator />
                 {/* DELETE FORM */}
-                <form>
+                <form action={onDelete}>
                     <input hidden name="id" id="id" value={data.id} />
                     <input
                         hidden

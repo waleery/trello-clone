@@ -63,7 +63,7 @@ const ListHeader = ({ data }: ListHeaderProps) => {
 
     const onKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
-            formRef.current?.requestSubmit();
+            disableEditing();
         }
     };
 

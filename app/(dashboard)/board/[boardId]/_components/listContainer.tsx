@@ -34,8 +34,35 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
         setOrderedData(data);
     }, [data]);
 
+    const onDragEnd = (result: any) => {
+        const {destination, source, type} = result;
+    
+        if(!destination) {
+            return;
+        }
+    
+        //If dropped in the same position
+        if(destination.droppableId === source.droppableId && destination.index === source.index) {
+            return;
+        }
+    
+        //If user moves a list
+    
+        if(type === "list") {
+            const items = reorder(
+                orderedData,
+                source.index,
+                destination.index
+            ).map((item, index) => ({...item, order: index}));
+
+            setOrderedData(items);
+
+            //TODO: Trigger server action
+        }
+    }
+
     return (
-        <DragDropContext onDragEnd={() => {}}>
+        <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="lists" type="list" direction="horizontal">
                 {(provided) => (
                     <ol

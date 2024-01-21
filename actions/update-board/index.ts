@@ -13,7 +13,9 @@ const handler = async (data: InputType): Promise<OutputType> => {
     const {userId, orgId} = auth()
 
     if(!userId || !orgId) {
-        throw new Error("Not authenticated")
+        return{
+            error: "Unauthorized"
+        }
     }
 
     const {title, id} = data

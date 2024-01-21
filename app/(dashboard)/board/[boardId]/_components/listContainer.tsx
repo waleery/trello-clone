@@ -13,6 +13,20 @@ interface ListContainerProps {
     boardId: string;
 }
 
+function reorder<T>(list: T[], startIndex: number, endIndex: number) {
+     // Create a copy of the original array to avoid modifying it directly.
+     const result = Array.from(list);
+
+     // Remove the element to be moved from its current position and store it in 'removed'.
+     const [removed] = result.splice(startIndex, 1);
+ 
+     // Insert the 'removed' element at the target index.
+     result.splice(endIndex, 0, removed);
+ 
+     // Return the newly reordered array.
+     return result;
+}
+
 const ListContainer = ({ data, boardId }: ListContainerProps) => {
     const [orderedData, setOrderedData] = useState<ListWithCards[]>(data);
 

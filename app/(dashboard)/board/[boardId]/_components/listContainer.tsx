@@ -1,9 +1,11 @@
 "use client";
 
-import { ListWithCards } from "@/types";
-import { List } from "@prisma/client";
-import ListForm from "./listForm";
 import { useEffect, useState } from "react";
+import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+
+import { ListWithCards } from "@/types";
+
+import ListForm from "./listForm";
 import ListItem from "./listItem";
 
 interface ListContainerProps {
@@ -16,23 +18,33 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
     useEffect(() => {
         setOrderedData(data);
-    },[data])
-
+    }, [data]);
 
     return (
-        <ol className="flex gap-x-3 h-full">
-            {orderedData.map((list, index) =>{
-               return (
-                <ListItem
-                    key={list.id}
-                    data={list}
-                    index={index}
-                />
-               ) 
-            })}
-            <ListForm/>
-            <div className="flex-shrink-0 w-1  border-green-500 border"/>
-        </ol>
+        <DragDropContext onDragEnd={() => {}}>
+            <Droppable droppableId="lists" type="list" direction="horizontal">
+                {(provided) => (
+                    <ol
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                        className="flex gap-x-3 h-full"
+                    >
+                        {orderedData.map((list, index) => {
+                            return (
+                                <ListItem
+                                    key={list.id}
+                                    data={list}
+                                    index={index}
+                                />
+                            );
+                        })}
+                        {provided.placeholder}
+                        <ListForm />
+                        <div className="flex-shrink-0 w-1  border-green-500 border" />
+                    </ol>
+                )}
+            </Droppable>
+        </DragDropContext>
     );
 };
 export default ListContainer;

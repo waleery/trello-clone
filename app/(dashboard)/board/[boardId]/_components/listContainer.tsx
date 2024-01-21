@@ -47,7 +47,6 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
         }
     
         //If user moves a list
-    
         if(type === "list") {
             const items = reorder(
                 orderedData,
@@ -58,6 +57,51 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
             setOrderedData(items);
 
             //TODO: Trigger server action
+        }
+
+        //If user moves a card
+        if(type === "card") {
+            let newOrderedData = [...orderedData];
+
+            //Source and destinations lists
+            const sourceList = newOrderedData.find((list) => list.id === source.droppableId);
+            const destinatonList = newOrderedData.find((list) => list.id === destination.droppableId);
+            
+            if(!sourceList || !destinatonList) {
+                return;
+            }
+
+            //Check if cards exists on the source list
+            if(!sourceList.cards) {
+                sourceList.cards = [];
+            }
+
+            //Check if cards exists on the destination list
+            if(!destinatonList.cards) {
+                destinatonList.cards = [];
+            }
+
+            //Moving the card in the same list
+            if(source.droppableId === destination.droppableId) {
+                const reorderedCards = reorder(
+                    sourceList.cards,
+                    source.index,
+                    destination.index
+                )
+
+                reorderedCards.forEach((card, index) => {
+                    card.order = index;
+                })
+
+                sourceList.cards = reorderedCards;
+                
+                //Changed 'sourceList' order, but that is a reference to the
+                // 'newOrderedData', so we need to update it
+
+                setOrderedData(newOrderedData)
+
+                //TODO: Trigger server action
+            }
         }
     }
 

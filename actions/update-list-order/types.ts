@@ -1,0 +1,10 @@
+import { z } from "zod";
+import { List } from "@prisma/client";
+
+import { ActionState } from "@/lib/createSafeAction";
+
+import { UpdateListOrder } from "./schema";
+
+
+export type InputType = z.infer<typeof UpdateListOrder>
+export type OutputType = ActionState<InputType, List[]>

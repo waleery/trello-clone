@@ -33,6 +33,7 @@ const handler = async (data: InputType): Promise<OutputType> => {
             },
             data: {
                 order: card.order,
+                listId: card.listId,
             },
         }));
 

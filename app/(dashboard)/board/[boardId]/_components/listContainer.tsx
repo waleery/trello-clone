@@ -10,6 +10,7 @@ import ListItem from "./listItem";
 import { useAction } from "@/hooks/useAction";
 import { updateListOrder } from "@/actions/update-list-order";
 import { toast } from "sonner";
+import { updateCardOrder } from "@/actions/update-card-order";
 
 interface ListContainerProps {
     data: ListWithCards[];
@@ -44,6 +45,16 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
         onError: (error) => {
             console.log(error);
             toast.error("Error updating list order");
+        },
+    });
+
+    const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+        onSuccess: (data) => {
+            toast.success("Cards reordered");
+        },
+        onError: (error) => {
+            console.log(error);
+            toast.error("Error updating cards order");
         },
     });
 
@@ -123,7 +134,8 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
                 setOrderedData(newOrderedData);
 
-                //TODO: Trigger server action
+                //Trigger server action 
+                executeUpdateCardOrder({boardId, items: reorderedCards})
 
                 //Moving the card to another list
             } else {

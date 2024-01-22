@@ -160,7 +160,11 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
                 setOrderedData(newOrderedData);
 
-                //TODO: Trigger server action
+                //Trigger server action
+                executeUpdateCardOrder({
+                    boardId: boardId,
+                    items:destinatonList.cards
+                })
             }
         }
     };

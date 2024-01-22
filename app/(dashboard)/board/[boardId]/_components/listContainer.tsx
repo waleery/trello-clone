@@ -164,6 +164,7 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
                 executeUpdateCardOrder({
                     boardId: boardId,
                     items:destinatonList.cards
+                    
                 })
             }
         }

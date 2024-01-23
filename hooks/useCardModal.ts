@@ -24,7 +24,7 @@ const store: StateCreator<CardModalStore> = (set) => ({
 
 
 // Create an instance of the store using the create function.
-export const useMobileSidebar = create<CardModalStore>()(store);
+export const useCardModal = create<CardModalStore>()(store);
 
 
 //https://github.com/pmndrs/zustand/blob/main/docs/guides/typescript.md

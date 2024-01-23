@@ -5,6 +5,7 @@ import { siteConfig } from "../config/site";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import ModalProvider from "@/components/providers/modalProvider";
+import QueryProvider from "@/components/providers/queryProivider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +30,11 @@ export default function RootLayout({
         <ClerkProvider>
             <html lang="en">
                 <body className={inter.className}>
-                    {children}
-                    <Toaster />
-                    <ModalProvider/>
+                    <QueryProvider>
+                        {children}
+                        <Toaster />
+                        <ModalProvider />
+                    </QueryProvider>
                 </body>
             </html>
         </ClerkProvider>

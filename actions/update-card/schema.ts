@@ -12,8 +12,8 @@ export const UpadteCard = z.object({
             message: "Description must be at least 3 characters long",
         })
     ),
-    title: z
-        .string({
+    title: z.optional(
+        z.string({
             //this checks if there is any value
             required_error: "Title is required",
             invalid_type_error: "Title must be a string",
@@ -23,6 +23,6 @@ export const UpadteCard = z.object({
         })
         .refine((value) => value !== "", {
             message: "Title is required",
-        }),
+        })),
     id: z.string(),
 });

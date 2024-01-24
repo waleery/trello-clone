@@ -8,9 +8,6 @@ export const UpadteCard = z.object({
             required_error: "Description is required",
             invalid_type_error: "Description must be a string",
         })
-        .min(3, {
-            message: "Description must be at least 3 characters long",
-        })
     ),
     title: z.optional(
         z.string({

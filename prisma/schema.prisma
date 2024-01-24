@@ -80,6 +80,7 @@ model AuditLog {
   userId      String
   userImage   String      @db.Text
   userName    String      @db.Text
+  userNick    String      
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

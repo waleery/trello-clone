@@ -29,7 +29,8 @@ export const createAuditLog = async (props: Props) => {
                 orgId,
                 userId: user.id,
                 userImage: user?.imageUrl,
-                userName: user?.firstName + " " + user?.lastName,
+                userName: user?.firstName,
+                userSurname: user?.lastName,
                 userNick: user?.username as string
             },
         })

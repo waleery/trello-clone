@@ -79,8 +79,9 @@ model AuditLog {
   entityTitle String
   userId      String
   userImage   String      @db.Text
-  userName    String      @db.Text
-  userNick    String      
+  userName    String?     @db.Text
+  userSurname String?     @db.Text
+  userNick    String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

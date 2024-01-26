@@ -8,6 +8,8 @@ import { db } from "@/lib/db"
 import { InputType, OutputType } from "./types"
 import { createSafeAction } from "@/lib/createSafeAction"
 import { UpadteCard } from "./schema"
+import { createAuditLog } from "@/lib/createAuditLog"
+import { ACTION, ENTITY_TYPE } from "@prisma/client"
 
 const handler = async (data: InputType): Promise<OutputType> => {
     const {userId, orgId} = auth()
@@ -34,6 +36,12 @@ const handler = async (data: InputType): Promise<OutputType> => {
             data: {
                 ...values
             }
+        })
+        await createAuditLog({
+            entityTitle: card.title,
+            entityId: card.id,
+            entityType: ENTITY_TYPE.CARD,
+            action: ACTION.UPDATE
         })
     } catch (error) {
         return {

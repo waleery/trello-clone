@@ -9,6 +9,8 @@ import { InputType, OutputType } from "./types";
 import { createSafeAction } from "@/lib/createSafeAction";
 import { DeleteBoard } from "./schema";
 import { redirect } from "next/navigation";
+import { createAuditLog } from "@/lib/createAuditLog";
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 const handler = async (data: InputType): Promise<OutputType> => {
     const { userId, orgId } = auth();
@@ -29,6 +31,13 @@ const handler = async (data: InputType): Promise<OutputType> => {
                 orgId,
             },
         });
+
+        await createAuditLog({
+            entityTitle: board.title,
+            entityId: board.id,
+            entityType: ENTITY_TYPE.BOARD,
+            action: ACTION.DELETE
+        })
     } catch (error) {
         return {
             error: "Fail to delete.",

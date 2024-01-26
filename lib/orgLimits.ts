@@ -65,7 +65,7 @@ export const hasAvailableCount = async () => {
 export const getAvailableCount = async () => {
     const { orgId } = auth();
     if (!orgId) {
-        throw 0
+        return 0
     }
     
     const orgLimit = await db.orgLimit.findUnique({

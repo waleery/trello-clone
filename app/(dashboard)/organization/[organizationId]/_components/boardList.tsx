@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
-
+import { getAvailableCount } from "@/lib/orgLimits";
+import { MAX_FREE_BOARDS } from "@/constants/boards";
 
 export const BoardList = async () => {
     const { orgId } = auth();
@@ -21,6 +22,8 @@ export const BoardList = async () => {
             createdAt: "desc",
         },
     });
+
+    const availableCount = await getAvailableCount();
 
     return (
         <div className="space-y-4">
@@ -39,7 +42,9 @@ export const BoardList = async () => {
                         className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm h-full w-full p-2 overflow-hidden"
                     >
                         <div className="absolute inset-0 group-hover:bg-white/20 transition" />
-                        <p className="relative font-semibold text-white">{board.title}</p>
+                        <p className="relative font-semibold text-white">
+                            {board.title}
+                        </p>
                     </Link>
                 ))}
                 <FormPopover side="right" sideOffset={10}>
@@ -48,7 +53,9 @@ export const BoardList = async () => {
                         className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transitiona"
                     >
                         <p className="text-sm">Create new board</p>
-                        <span className="text-xs">5 remaining</span>
+                        <span className="text-xs">
+                            {`${MAX_FREE_BOARDS - availableCount} remaining`}
+                        </span>
                         <Hint
                             sideOffset={40}
                             description={`Free Workspaces can have up to 5 open boards. For unlimited boards, upgrade this workspace.`}
@@ -63,7 +70,7 @@ export const BoardList = async () => {
 };
 
 BoardList.Skeleton = function SkeletonBoardList() {
-    return(
+    return (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
@@ -73,5 +80,5 @@ BoardList.Skeleton = function SkeletonBoardList() {
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
         </div>
-    )
-}
+    );
+};

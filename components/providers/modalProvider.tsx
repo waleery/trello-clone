@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import CardModal from "../modals/card-modal";
+import ProModal from "../modals/proModal";
 
 const ModalProvider = () => {
     //protect for hydration error
@@ -16,6 +17,7 @@ const ModalProvider = () => {
     return (
         <>
             <CardModal />
+            <ProModal />
         </>
     );
 };

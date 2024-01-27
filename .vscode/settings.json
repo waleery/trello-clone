@@ -9,6 +9,7 @@
         "board",
         "lists",
         "card",
-        "routes"
+        "routes",
+        "stripe"
     ]
 }

@@ -63,7 +63,6 @@ const handler = async (data: InputType): Promise<OutputType> => {
 
         if(!isPro){
             await incrementAvailableCount( )
-
         }
 
         await createAuditLog({

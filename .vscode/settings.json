@@ -10,6 +10,7 @@
         "lists",
         "card",
         "routes",
-        "stripe"
+        "stripe",
+        "billing"
     ]
 }

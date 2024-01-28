@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import MobileSidebar from "./mobileSidebar";
 import { FormPopover } from "@/components/form/formPopover";
+import { absoluteUrl } from "@/lib/utils";
 
 const Navbar = () => {
+    const urlToRedirectAfterLogout = absoluteUrl("")
     return (
         <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
             <MobileSidebar />
@@ -50,7 +52,7 @@ const Navbar = () => {
                     }}
                 />
                 <UserButton
-                    afterSignOutUrl="/"
+                    afterSignOutUrl={urlToRedirectAfterLogout}
                     appearance={{
                         elements: {
                             avatarBox: {

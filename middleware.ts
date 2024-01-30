@@ -32,8 +32,6 @@ export default authMiddleware({
 
             return NextResponse.redirect(orgSelection)
         }
-
-        return redirectToSignIn({ returnBackUrl: req.url });
     },
 });
 

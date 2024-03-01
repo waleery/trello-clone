@@ -27,7 +27,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ClerkProvider>
+        <ClerkProvider clerkJSVersion={'4.70.2-snapshot.v86eb801'}>
             <html lang="en">
                 <body className={inter.className}>
                     <QueryProvider>

@@ -36,7 +36,7 @@ const Sidebar = ({ storageKey = "achiveo-sidebar-project" } : SidebarProps) => {
     // { "123": true, "456": false, "789": true} => ["123", "789"]
     const defaultAccordionValue = useMemo(() => {
         return Object.keys(expanded).reduce((acc: string[], key: string) => {
-            console.log("funkcja")
+            //console.log("funkcja")
             if (expanded[key]) {
                 acc.push(key);
             }
@@ -50,11 +50,11 @@ const Sidebar = ({ storageKey = "achiveo-sidebar-project" } : SidebarProps) => {
             [id]: !expanded[id],
         }));
     };
-    console.log("-------");
-    console.log(isLoadedOrganization);
-    console.log(activeOrganization);
-    console.log(isLoadedOrganizationList);
-    console.log(userMemberships);
+    // console.log("-------");
+    // console.log(isLoadedOrganization);
+    // console.log(activeOrganization);
+    // console.log(isLoadedOrganizationList);
+    // console.log(userMemberships);
 
     if (
         !isLoadedOrganization ||

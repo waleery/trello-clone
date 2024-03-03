@@ -111,10 +111,16 @@ npm run dev
 ## Screenshots
 
 ![LandingBoard Screenshot](/screenshots/LandingPage.png?text=LandingBoard+Screenshot)
-![App Screenshot1](/screenshots/LandingPage.png?text=App+Screenshot1)
-![App Screenshot2](/screenshots/LandingPage.png?text=App+Screenshot2)
-![App Screenshot3](/screenshots/LandingPage.png?text=App+Screenshot3)
-![App Screenshot4](/screenshots/LandingPage.png?text=App+Screenshot4)
-![App Screenshot5](/screenshots/LandingPage.png?text=App+Screenshot5)
-![App Screenshot6](/screenshots/LandingPage.png?text=App+Screenshot6)
+
+![App Screenshot1](/screenshots/Screenshot1.png.png?text=App+Screenshot1)
+
+![App Screenshot2](/screenshots/Screenshot2.png?text=App+Screenshot2)
+
+![App Screenshot3](/screenshots/Screenshot3.png?text=App+Screenshot3)
+
+![App Screenshot4](/screenshots/Screenshot4.png?text=App+Screenshot4)
+
+![App Screenshot5](/screenshots/Screenshot5.png?text=App+Screenshot5)
+
+![App Screenshot6](/screenshots/Screenshot6.png?text=App+Screenshot6)
 

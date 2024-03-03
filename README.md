@@ -112,7 +112,7 @@ npm run dev
 
 ![LandingBoard Screenshot](/screenshots/LandingPage.png?text=LandingBoard+Screenshot)
 
-![App Screenshot1](/screenshots/Screenshot1.png.png?text=App+Screenshot1)
+![App Screenshot1](/screenshots/Screenshot1.png?text=App+Screenshot1)
 
 ![App Screenshot2](/screenshots/Screenshot2.png?text=App+Screenshot2)
 

@@ -34,6 +34,7 @@ https://achiveo.vercel.app/
 - Organizations / Workspaces
 - Board creation
 - Responsive
+- Error handling
 - Unsplash API for random cover images
 - Activity log for entire organization
 - Board rename and delete
@@ -109,5 +110,11 @@ npm run dev
 
 ## Screenshots
 
-![App Ssascreenshot](https://via.placeholder.com/468x300?text=App+Scraseenshot+Here)
+![LandingBoard Screenshot](/screenshots/LandingPage.png?text=LandingBoard+Screenshot)
+![App Screenshot1](/screenshots/LandingPage.png?text=App+Screenshot1)
+![App Screenshot2](/screenshots/LandingPage.png?text=App+Screenshot2)
+![App Screenshot3](/screenshots/LandingPage.png?text=App+Screenshot3)
+![App Screenshot4](/screenshots/LandingPage.png?text=App+Screenshot4)
+![App Screenshot5](/screenshots/LandingPage.png?text=App+Screenshot5)
+![App Screenshot6](/screenshots/LandingPage.png?text=App+Screenshot6)
 

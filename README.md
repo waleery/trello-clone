@@ -1,4 +1,4 @@
-![Achiveo logo](screenshots/LandingPage.png)
+![LandignPage](screenshots/ScreenshotBoard.png.png)
 
 Achiveo is a Trello clone with additional features such as workspaces, boards, lists, cards, audit logs/activity tracking, and member roles. This project for example utilizes various technologies including PostgreSQL, Prisma ORM, shadcnUI, TailwindCSS, and integrates with the Unsplash API for fetching beautiful cover images.
 
@@ -9,7 +9,8 @@ https://achiveo.vercel.app/
 ## Tech Stack
 
 
-[![Next.js](https://img.shields.io/badge/Next.js-gray.svg?logo=next.js&logoColor=white)](https://nextjs.org/)[![Clerk](https://img.shields.io/badge/Clerk-grey.svg?logo=clerk)](https://clerk.dev/)
+[![Next.js](https://img.shields.io/badge/Next.js-gray.svg?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Clerk](https://img.shields.io/badge/Clerk-grey.svg?logo=clerk)](https://clerk.dev/)
 [![Prisma](https://img.shields.io/badge/Prisma-gray.svg?logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![React Query](https://img.shields.io/badge/React_Query-gray.svg?logo=reactquery&logoColor=white)](https://react-query.tanstack.com/)
 [![Lodash](https://img.shields.io/badge/Lodash-gray.svg?logo=lodash&logoColor=white)](https://lodash.com/)

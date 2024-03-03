@@ -1,4 +1,4 @@
-![LandignPage](screenshots/ScreenshotBoard.png.png)
+![LandingPage](screenshots/ScreenshotBoard.png)
 
 Achiveo is a Trello clone with additional features such as workspaces, boards, lists, cards, audit logs/activity tracking, and member roles. This project for example utilizes various technologies including PostgreSQL, Prisma ORM, shadcnUI, TailwindCSS, and integrates with the Unsplash API for fetching beautiful cover images.
 
